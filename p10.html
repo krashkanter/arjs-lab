@@ -1,0 +1,47 @@
+<!--Develop a simple Angular JS calculator application that can perform basic mathematical operations (addition, subtraction, multiplication, division) based on user input-->
+
+<!doctype html>
+<html ng-app="myApp">
+    <head>
+        <title>ARJS Program 10</title>
+        <script src="angular.min.js"></script>
+    </head>
+    <body ng-controller="myController">
+        <input type="number" ng-model="num1" placeholder="Number 1" />
+        <input type="number" ng-model="num2" placeholder="Number 2" />
+        <button ng-click="calc('reset')">Reset</button>
+        <br />
+        <button ng-click="calc('add')">Add</button>
+        <button ng-click="calc('sub')">Subtract</button>
+        <button ng-click="calc('mul')">Multiply</button>
+        <button ng-click="calc('div')">Divide</button>
+
+        <p>Result: {{ result }}</p>
+    </body>
+</html>
+
+<script>
+    var app = angular.module("myApp", []);
+    app.controller("myController", function ($scope) {
+        $scope.calc = function (op) {
+            switch (op) {
+                case "add":
+                    $scope.result = $scope.num1 + $scope.num2;
+                    break;
+                case "sub":
+                    $scope.result = $scope.num1 - $scope.num2;
+                    break;
+                case "mul":
+                    $scope.result = $scope.num1 * $scope.num2;
+                    break;
+                case "div":
+                    $scope.result = $scope.num1 / $scope.num2;
+                    break;
+                default:
+                    $scope.result = "";
+                    $scope.num1 = "";
+                    $scope.num2 = "";
+            }
+        };
+    });
+</script>
