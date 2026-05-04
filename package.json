@@ -1,0 +1,12 @@
+{
+  "name": "arjs-lab",
+  "private": true,
+  "workspaces": [
+    "p6",
+    "p7",
+    "p8",
+    "p14",
+    "p15",
+    "p16"
+  ]
+}
