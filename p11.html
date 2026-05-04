@@ -1,0 +1,36 @@
+<!--AngularJS Program to display the square the number in textbox by using factory methods-->
+
+<!doctype html>
+<html ng-app="App">
+    <head>
+        <title>ARJS Program 11</title>
+        <script src="angular.min.js"></script>
+    </head>
+    <body ng-controller="Controller">
+        <input type="number" ng-model="num" placeholder="x?" />
+        <button ng-click="square()">x<sup>2</sup></button>
+        <br />
+        <p>Result: {{ result }}</p>
+    </body>
+</html>
+
+<script>
+    var app = angular.module("App", []);
+    app.factory("Factory", function () {
+        var factory = {};
+        factory.square = function (a) {
+            return a * a;
+        };
+        return factory;
+    });
+    app.service("Service", function (Factory) {
+        this.square = function (a) {
+            return Factory.square(a);
+        };
+    });
+    app.controller("Controller", function ($scope, Service) {
+        $scope.square = function () {
+            $scope.result = Service.square($scope.num);
+        };
+    });
+</script>
