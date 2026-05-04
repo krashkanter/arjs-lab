@@ -1,0 +1,56 @@
+<!--Write an AngularJS program to create a simple CRUD application (Create, Read, Update, and Delete) for managing users-->
+
+<!doctype html>
+<html ng-app="App">
+    <head>
+        <title>ARJS Program 12</title>
+        <script src="angular.min.js"></script>
+    </head>
+    <body ng-controller="Controller">
+        <input type="text" ng-model="name" placeholder="Name" />
+        <input type="text" ng-model="email" placeholder="E-mail" />
+        <button ng-click="edit ? updateUser() : addUser()">
+            {{ edit ? "Edit" : "Add"}}
+        </button>
+        <hr />
+        <ul>
+            <li ng-repeat="u in users track by $index">
+                {{u.name}} - {{u.email}}
+                <button ng-click="editUser($index)">Edit</button>
+                <button ng-click="removeUser($index)">Delete</button>
+            </li>
+        </ul>
+    </body>
+</html>
+<script>
+    let app = angular.module("App", []);
+    app.controller("Controller", function ($scope) {
+        let editIndex = -1;
+        $scope.users = [];
+        $scope.edit = false;
+        function clear() {
+            $scope.name = "";
+            $scope.email = "";
+        }
+        $scope.addUser = function () {
+            $scope.users.push({ name: $scope.name, email: $scope.email });
+            clear();
+        };
+        $scope.editUser = function (index) {
+            $scope.name = $scope.users[index].name;
+            $scope.email = $scope.users[index].email;
+            editIndex = index;
+            $scope.edit = true;
+        };
+        $scope.updateUser = function () {
+            $scope.users[editIndex].name = $scope.name;
+            $scope.users[editIndex].email = $scope.email;
+            $scope.edit = false;
+            $scope.index = -1;
+            clear();
+        };
+        $scope.removeUser = function (index) {
+            $scope.users.splice(index, 1);
+        };
+    });
+</script>
