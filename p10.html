@@ -1,12 +1,12 @@
 <!--Develop a simple Angular JS calculator application that can perform basic mathematical operations (addition, subtraction, multiplication, division) based on user input-->
 
 <!doctype html>
-<html ng-app="myApp">
+<html ng-app="App">
     <head>
         <title>ARJS Program 10</title>
         <script src="angular.min.js"></script>
     </head>
-    <body ng-controller="myController">
+    <body ng-controller="Controller">
         <input type="number" ng-model="num1" placeholder="Number 1" />
         <input type="number" ng-model="num2" placeholder="Number 2" />
         <button ng-click="calc('reset')">Reset</button>
@@ -21,8 +21,8 @@
 </html>
 
 <script>
-    var app = angular.module("myApp", []);
-    app.controller("myController", function ($scope) {
+    var app = angular.module("App", []);
+    app.controller("Controller", function ($scope) {
         $scope.calc = function (op) {
             switch (op) {
                 case "add":

@@ -1,12 +1,12 @@
 <!--Develop an AngularJS application that displays a list of shopping items. Allow users to add and remove items from the list using directives and controllers-->
 
 <!doctype html>
-<html ng-app="myApp">
+<html ng-app="App">
     <head>
         <title>ARJS Program 9</title>
         <script src="angular.min.js"></script>
     </head>
-    <body ng-controller="myController">
+    <body ng-controller="Controller">
         <h2>Shopping Cart</h2>
         <input type="text" ng-model="newItem" placeholder="Enter item name" />
         <button ng-click="addItem()">Add</button>
@@ -23,8 +23,8 @@
     </body>
 </html>
 <script>
-    var app = angular.module("myApp", []);
-    app.controller("myController", function ($scope) {
+    var app = angular.module("App", []);
+    app.controller("Controller", function ($scope) {
         $scope.items = [];
         $scope.addItem = function () {
             if ($scope.newItem && $scope.newItem.trim() !== "") {

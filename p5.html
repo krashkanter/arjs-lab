@@ -1,12 +1,12 @@
 <!--Angular JS program to add two numbers by taking input from text box and create add function to add two numbers-->
 
 <!doctype html>
-<html ng-app="myApp">
+<html ng-app="App">
     <head>
         <title>ARJS Program 5</title>
         <script src="angular.min.js"></script>
     </head>
-    <body ng-controller="myController">
+    <body ng-controller="Controller">
         <input type="number" ng-model="num1" placeholder="Number 1" />
         <input type="number" ng-model="num2" placeholder="Number 2" />
         <button ng-click="add()">Add</button>
@@ -15,8 +15,8 @@
     </body>
 </html>
 <script>
-    var app = angular.module("myApp", []);
-    app.controller("myController", function ($scope) {
+    var app = angular.module("App", []);
+    app.controller("Controller", function ($scope) {
         $scope.add = function () {
             $scope.result = $scope.num1 + $scope.num2;
         };
