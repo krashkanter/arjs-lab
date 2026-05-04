@@ -1,0 +1,55 @@
+<!--Develop AngularJS program to create a login form, with validation for the username and password fields-->
+
+<!doctype html>
+<html ng-app="App">
+    <head>
+        <title>ARJS Program 13</title>
+        <script src="angular.min.js"></script>
+    </head>
+    <body ng-controller="Controller">
+        <form name="Form" ng-submit="login()" novalidate>
+            <input
+                type="text"
+                name="username"
+                ng-model="username"
+                placeholder="Username"
+                required
+            />
+            <input
+                type="password"
+                name="password"
+                ng-model="password"
+                placeholder="Password"
+                required
+            />
+            <button type="submit">Login</button>
+            <br />
+            <p
+                style="color: darkred"
+                ng-show="Form.$submitted && Form.username.$error.required"
+            >
+                Username is required
+            </p>
+            <p
+                style="color: darkred"
+                ng-show="Form.$submitted && Form.password.$error.required"
+            >
+                Password is required
+            </p>
+            <p ng-if="success" style="color: seagreen">
+                Form submitted successfully
+            </p>
+        </form>
+    </body>
+</html>
+<script>
+    let app = angular.module("App", []);
+    app.controller("Controller", function ($scope) {
+        $scope.success = false;
+        $scope.login = function () {
+            if ($scope.Form.$valid) {
+                $scope.success = true;
+            }
+        };
+    });
+</script>
